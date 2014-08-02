@@ -12,11 +12,13 @@ class TestBaseCommand_OptStr(object):
     def test_single_value(self):
         assert '--name test' == BaseCommand.opt_str({'name':'test'})
         assert '-n test' == BaseCommand.opt_str({'n':'test'})
-        assert '--flag' == BaseCommand.opt_str({'flag': None})
+        assert '--flag' == BaseCommand.opt_str({'flag': True})
+        assert '' == BaseCommand.opt_str({'flag': False})
+        assert '' == BaseCommand.opt_str({'flag': None})
 
     def test_many_values(self):
         opt1 = {'n':'test'}
-        opt2 = {'val2':'lala', 'o':None}
+        opt2 = {'val2':'lala', 'o':True}
         got = BaseCommand.opt_str(opt1, opt2)
         assert '-n test' in got
         assert '--val2 lala' in got

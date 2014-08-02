@@ -69,8 +69,10 @@ class BaseCommand(object):
         # format options as strings
         parts = []
         for name, val in options.items():
+            if val is False or val is None:
+                continue
             dashes = '-' if len(name) == 1 else '--'
-            opt_val = ' {}'.format(val) if val is not None else ''
+            opt_val = ' {}'.format(val) if val is not True else ''
             parts.append(dashes + name + opt_val)
         return ' '.join(parts)
 
