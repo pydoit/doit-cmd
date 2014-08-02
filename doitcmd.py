@@ -68,7 +68,7 @@ class BaseCommand(object):
 
         # format options as strings
         parts = []
-        for name, val in options.items():
+        for name, val in sorted(options.items()):
             if val is False or val is None:
                 continue
             dashes = '-' if len(name) == 1 else '--'
