@@ -1,15 +1,8 @@
 """
 Helpers for creating tasks that exectue shell commands.
-
-`cmd()`: create simple tasks for a command
-
-`interactive()`: create simple tasks for an interactive command
-
-`BaseCommand` to be sub-classed to create more complex task generators
-
-
 """
 
+__version__ = (0, 1, 0)
 
 from doit.tools import Interactive
 
@@ -31,10 +24,7 @@ class BaseCommand(object):
     :var bool sudo: If `True` prepend `sudo` to command
     :var bool Interactive: If `True` use `doit.tools.Interactive` on action.
 
-    Usage
-    ------
-
-    see `doitsys.copy.Copy`
+    Usage: see `doitsys.copy.Copy`
     """
     cmd_template = None
     base_options = {}
@@ -55,11 +45,12 @@ class BaseCommand(object):
 
     @staticmethod
     def opt_str(*opt_list):
-        """Return a string with formatted options for a command line.
+        """command line option formatter
 
         :param list-dict opt_list: list of dict with command options
+        :return string: formatted options for a command line
 
-        If the value of an option is None, option is added wihtout a value.
+        If the value of an option is `True`, option is added wihtout a value.
         If opt name lenght is just one characher use only one dash.
         """
         options = {}
@@ -92,13 +83,19 @@ class BaseCommand(object):
 
 
     def __call__(self): # pragma: no cover
-        """return a task dictionary"""
+        """return a task dictionary (to be implement on sub-class)"""
         raise NotImplementedError()
 
 
 
 def cmd(cmd_str, sudo=None, **task_params):
-    """short-cut to execute a simple command"""
+    """short-cut to return a task that executes a simple command
+
+    :param str cmd_str: the command to be executed
+    :param bool sudo: execute to command as `sudo`
+    :param dict task_params: extra doit task params (file_dep, task_dep...)
+    :return dict: doit task metadata
+    """
     _cmd = BaseCommand(sudo=sudo)
     task = {
         'name': cmd_str,
@@ -109,7 +106,13 @@ def cmd(cmd_str, sudo=None, **task_params):
 
 
 def interactive(cmd_str, sudo=None, **task_params):
-    """short-cut to execute a simple command interactively"""
+    """short-cut to return a task that executes a simple command interactively
+
+    :param str cmd_str: the command to be executed
+    :param bool sudo: execute to command as `sudo`
+    :param dict task_params: extra doit task params (file_dep, task_dep...)
+    :return dict: doit task metadata
+    """
     _cmd = BaseCommand(sudo=sudo, interactive=True)
     task = {
         'name': cmd_str,

@@ -5,4 +5,4 @@ pyflakes
 pytest
 coverage
 doit
-doit-py
+doit-py>=0.2

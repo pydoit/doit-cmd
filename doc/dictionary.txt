@@ -1,0 +1,17 @@
+BaseCommand
+Naufel
+Schettino
+Sep
+autoclass
+autofunction
+automodule
+bysource
+cmd
+doit
+doitcmd
+github
+init
+py
+quickstart
+str
+toctree

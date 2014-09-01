@@ -1,5 +1,11 @@
-doit-cmd - Helper to create doit tasks that execute a command
-==============================================================
+doit-cmd
+=========
+
+Helper to create `doit`_ tasks that execute a command
+
+
+.. _doit: http://pydoit.org
+
 
 .. display some badges
 
@@ -10,13 +16,14 @@ doit-cmd - Helper to create doit tasks that execute a command
         :target: https://coveralls.io/r/pydoit/doit-cmd
 
 
-XXX
-
 
 Project Details
 ===============
 
 - Project management on github - https://github.com/pydoit/doit-cmd/
+- Website / `docs`_ http://pythonhosted.org/doit-py
+
+.. _docs: http://pythonhosted.org/doit-py
 
 
 license
