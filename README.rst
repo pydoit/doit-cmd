@@ -21,7 +21,7 @@ Project Details
 ===============
 
 - Project management on github - https://github.com/pydoit/doit-cmd/
-- Website / `docs`_ http://pythonhosted.org/doit-py
+- Website / `docs`_ http://pythonhosted.org/doit-cmd
 
 .. _docs: http://pythonhosted.org/doit-py
 
